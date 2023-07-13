@@ -5,8 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { calculateDifference } from './utils/calculateDifference';
 
 function App() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(Date.now());
+  const [endDate, setEndDate] = useState(Date.now());
   const [difference, setDifference] = useState();
 
   const datePickerProps = {

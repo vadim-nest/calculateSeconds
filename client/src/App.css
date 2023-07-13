@@ -9,23 +9,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .select-box {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 30px;
   background-color: #e6e6e63d;
 }
 
 .left-select, .right-select {
   margin: 20px;
-}
-
-form {
-  margin-top: 50px;
 }
 
 input {
@@ -35,11 +30,11 @@ input {
   padding: 15px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  cursor: pointer;
+  cursor: text;
   height: 20px;
   border-radius: 10px;
+  margin: auto;
 }
 
 input[type="submit"] {
@@ -49,9 +44,6 @@ input[type="submit"] {
   border: none;
   color: white;
   padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   margin: auto;
   margin-right: 20px;
