@@ -2,31 +2,39 @@ import './App.css';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { calculateDifference } from './utils/calculateDifference';
 
 function App() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [difference, setDifference] = useState();
 
   const datePickerProps = {
-    dateFormat: "dd/MM/yyyy - hh:mm",
+    dateFormat: 'dd/MM/yyyy - hh:mm',
     timeInputLabel: 'Time:',
     showMonthDropdown: true,
     showYearDropdown: true,
     showTimeInput: true,
     dropdownMode: 'select',
     fixedHeight: true,
-    form: 'external-form'
+    form: 'external-form',
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(startDate, endDate);
-  }
+    const data = await calculateDifference(startDate, endDate);
+    setDifference(data);
+  };
 
   return (
     <div className='App'>
       <header className='App-header'>
-        <div className='select-box'>
+        {difference ? (
+          <p>The time difference is {difference} seconds.</p>
+        ) : (
+          <p>Enter the dates to find the time difference!</p>
+        )}
+        <form className='select-box' onSubmit={handleSubmit}>
           <div className='left-select'>
             <DatePicker
               selected={startDate}
@@ -41,10 +49,8 @@ function App() {
               {...datePickerProps}
             />
           </div>
-            <form id='external-form' onSubmit={handleSubmit}>
-              <input type='submit' />
-            </form>
-        </div>
+          <input type='submit' value='Calculate' />
+        </form>
       </header>
     </div>
   );
